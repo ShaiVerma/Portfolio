@@ -1,0 +1,460 @@
+:root {
+  /* Bright & Elegant Cosmic Palette */
+  --bg-deep: #0B0E14;
+  /* Deepest Blue, not charcoal */
+
+  --color-indigo: #6366F1;
+  --color-violet: #8B5CF6;
+  --color-fuchsia: #D946EF;
+  --color-cyan: #06B6D4;
+  --color-starlight: #FFFFFF;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #E2E8F0;
+
+  /* Gradients */
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+  --gradient-border: linear-gradient(135deg, var(--color-cyan), var(--color-fuchsia));
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Spacing */
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  /* Deep space base */
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.4) 0%, transparent 50%),
+    /* Deep Violet Nebula */
+    radial-gradient(circle at 85% 30%, rgba(15, 118, 110, 0.3) 0%, transparent 50%),
+    /* Cyan/Teal Nebula */
+    radial-gradient(circle at 50% 80%, rgba(192, 38, 211, 0.2) 0%, transparent 50%);
+  /* Fuchsia Nebula */
+  background-attachment: fixed;
+}
+
+/* Twinkling Stars */
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 50px 160px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 160px 120px, #fff, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: twinkle 4s infinite ease-in-out;
+  opacity: 0.7;
+}
+
+/* More Stars (Different Size/Speed) */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    radial-gradient(1.5px 1.5px at 100px 150px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1.5px 1.5px at 200px 50px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1.5px 1.5px at 50px 200px, #fff, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  animation: twinkle 6s infinite ease-in-out reverse;
+  opacity: 0.5;
+}
+
+/* Utility Classes */
+
+.text-gradient {
+  background: linear-gradient(to right, #67E8F9, #E879F9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(103, 232, 249, 0.3));
+}
+
+.text-neon {
+  color: #fff;
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(6, 182, 212, 0.5);
+  /* Much softer glow */
+}
+
+.social-icon {
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.social-icon:hover {
+  color: var(--color-cyan);
+  transform: translateY(-3px);
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.6));
+}
+
+.glass-panel {
+  background: var(--gradient-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-border {
+  position: relative;
+  z-index: 1;
+}
+
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  /* Slight offset for border only */
+  z-index: -1;
+  background: var(--gradient-border);
+  border-radius: 18px;
+  /* 16px + 2px */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+
+.glow-border:hover::before {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.6));
+  /* Glow only on the border */
+}
+
+/* Removed ::after diffuse glow as requested */
+/* .glow-border::after { ... } */
+
+.glow-border:hover {
+  transform: translateY(-4px);
+  /* Faint colored glow to make tiles stand out */
+  box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.3);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+/* Experience Timeline */
+.experience-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: var(--gradient-border);
+  opacity: 0.3;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 3rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -6px;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-fuchsia);
+  box-shadow: 0 0 10px var(--color-fuchsia);
+  z-index: 1;
+}
+
+.timeline-date {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-cyan);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Sections */
+section {
+  padding: var(--spacing-xl) var(--spacing-md);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.01em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-cyan);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-fade-in>* {
+  animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+.animate-fade-in>*:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.animate-fade-in>*:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.animate-fade-in>*:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* Floating Shapes - More Elegant */
+.shape {
+  position: fixed;
+  z-index: -1;
+  opacity: 0.4;
+  filter: blur(40px);
+  border-radius: 50%;
+  animation: float 25s infinite ease-in-out alternate;
+}
+
+/* Reusing shape classes from App.jsx but making them softer blobs */
+.shape-cube {
+  background: var(--color-indigo);
+  width: 30vw;
+  height: 30vw;
+}
+
+.shape-circle {
+  background: var(--color-fuchsia);
+  width: 25vw;
+  height: 25vw;
+}
+
+.shape-triangle {
+  background: var(--color-cyan);
+  width: 20vw;
+  height: 20vw;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(30px, 30px);
+  }
+}
+
+/* Horizontal Scroll for Skills */
+.skills-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 2rem;
+  padding: 1rem 0 2rem 0;
+  /* Top padding for hover lift, Bottom for shadow */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.skills-container::-webkit-scrollbar {
+  display: none;
+}
+
+.skills-container>div {
+  flex: 0 0 45%;
+  /* 2 items visible */
+  scroll-snap-align: center;
+  min-width: 300px;
+}
+
+@media (max-width: 1024px) {
+  .skills-container>div {
+    flex: 0 0 45%;
+    /* 2 items */
+  }
+}
+
+@media (max-width: 640px) {
+  .skills-container>div {
+    flex: 0 0 85%;
+    /* 1 item */
+  }
+}
+
+.scroll-indicator {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-cyan);
+  font-size: 2rem;
+  z-index: 10;
+  animation: bounceRight 2s infinite;
+  pointer-events: auto;
+  cursor: pointer;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, transparent 70%);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.scroll-indicator:hover {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%);
+  transform: translateY(-50%) scale(1.1);
+}
+
+@keyframes bounceRight {
+
+  50% {
+    transform: translate(10px, -50%);
+  }
+}
+
+/* Hero Section Layout */
+.hero-content {
+  display: flex;
+  flex-direction: column-reverse;
+  /* Text below image on mobile usually, or column. Let's stick to column for text-image or column-reverse implementation detail based on design. Standard is often image top or text top. User asked for right aligned picture. On mobile, usually stack. Let's do column (image below text) or column-reverse (image above). Let's go with column (image below) or just standard flow. */
+  /* Actually, for "text left, image right" on desktop, column on mobile means image below text usually. */
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 3rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .hero-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+}
+
+.profile-image-container {
+  width: 280px;
+  height: 280px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--color-cyan);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  animation: float 6s ease-in-out infinite;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.profile-image-container:hover .profile-image {
+  transform: scale(1.1);
+}
