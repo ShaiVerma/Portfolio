@@ -53,7 +53,7 @@ const Resume = () => {
                         </button>
 
                         <a
-                            href="VermaShaiSpring26.pdf"
+                            href="/VermaShaiSpring26.pdf"
                             download="VermaShaiResume.pdf"
                             className="glass-panel"
                             style={{
