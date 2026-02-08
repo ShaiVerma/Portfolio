@@ -458,3 +458,92 @@ a:hover {
 .profile-image-container:hover .profile-image {
   transform: scale(1.1);
 }
+
+/* Mobile Header & Navigation */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.site-header>div {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-cyan);
+  /* Using cyan as accent */
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li a {
+  position: relative;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: var(--color-cyan);
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 0.5rem;
+  }
+
+  .site-header>div {
+    display: none;
+    /* Often cleaner to hide logo on scrollable nav or keep it small. Let's keep it visible but maybe smaller? actually, user asked for scrollable header. */
+    /* Let's keep logo visible but allow nav to scroll below it */
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .site-header nav {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    /* Center initially if fits, else left align with scroll */
+  }
+
+  /* Actually for scroll, justify-content center breaks scroll sometimes. safe is flex-start or left */
+  .site-header nav {
+    justify-content: flex-start;
+  }
+
+  .site-header nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links {
+    width: max-content;
+    padding: 0.5rem 1rem;
+    gap: 1.5rem;
+  }
+}
