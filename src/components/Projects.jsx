@@ -81,6 +81,16 @@ const Projects = () => {
             ],
             tags: ['Deep Learning', 'Machine Learning', 'Neural Networks', 'Transformers', 'BERT', 'CNN', 'Pandas', 'NumPy', 'Job Recommendation System'],
             link: 'https://github.com/BenA669/DeepLearningProject.git'
+        },
+        {
+            title: 'Preference-based Reinforcement Learning',
+            description: [
+                'Implemented a CNN-based supervised learning approach to train reward models from pairwise trajectory comparisons.',
+                'Enabled agents to learn reward functions from human preferences instead of hand-crafted specifications.',
+                'Utilized the learned reward models to guide DQN agents in complex environments.'
+            ],
+            tags: ['Reinforcement Learning', 'Deep Learning', 'CNN', 'DQN', 'Python', 'Machine Learning', 'AI'],
+            link: 'https://github.com/pdd23001/DQN-CNN.git'
         }
     ];
 
