@@ -35,6 +35,11 @@ const Awards = () => {
             icon: <FaMedal style={{ color: '#CD7F32' }} /> // Bronze
         },
         {
+            title: '3rd Place - CCEI Pitch Competition for Helio',
+            description: 'Pitched helio, an AI-powered solar forecasting platform designed to solve the unpredictability of renewable energy.',
+            icon: <FaMedal style={{ color: '#CD7F32' }} /> // Bronze
+        },
+        {
             title: 'Dean\'s List Engineering Scholar',
             description: 'Ranked in upper 25th percentile (Dec 2023, May 2024, Dec 2024, Dec 2025).',
             icon: <FaUniversity style={{ color: 'var(--color-cyan)' }} />
